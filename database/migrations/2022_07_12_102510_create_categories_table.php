@@ -14,10 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->unsignedSmallInteger('id')->primary();
-            $table->unsignedSmallInteger('parent_id')->nullable();
+            $table->id();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('name',100);
-            $table->timestamps();
         });
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {
-            $table->unsignedSmallInteger('id')->primary();
+            $table->id();
             $table->string('name',50);
         });
     }

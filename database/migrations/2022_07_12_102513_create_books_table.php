@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('name',50);
             $table->string('description');
             $table->integer('price');
             $table->integer('inventory');
-            $table->timestamp('publication_year');
+            $table->timestamp('publication_year')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');
