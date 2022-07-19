@@ -1,63 +1,61 @@
-@extends('layouts/admin',[
-    'title'=>'صفحه ثبت‌نام کاربر'
+@extends('layouts.admin',[
+    'title'=>'صفحه ثبت نام'
 ])
 
+{{-- @section('title', 'صفحه ثبت نام') --}}
+
 @section('content')
-    <div class="col-12 col-md-3 register-right">
-        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-        <h3>خوش آمدید</h3>
-        <p>تنها در چند ثانیه عضو شوید.</p>
-        <input type="submit" name="" value="ورود به سایت"/><br/>
-    </div>
-    <div class="col-12 col-md-9">
-    <div class="register-left p-3">
-        <!-- /Tabs Nav-bar -->
+    @component('components.authentication')
+        @slot('url')
+            {{ route('login') }}
+        @endslot
+        @slot('type')
+            ورود به
+        @endslot
+        @slot('text_main')
+            <h3 class="register-heading">ثبت نام کاربر</h3>
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <div class="row register-form mx-auto">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="* نام" value="{{old('name')}}"  autofocus >
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name='last_name' value="{{old('last_name')}}" placeholder="* نام خانوادگی" >
+                        </div>
 
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <h3 class="register-heading">ثبت‌نام کاربر</h3>
-                <form action="{{route('register')}}" method="post">
-                    @csrf
-                    <div class="row register-form mx-auto">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <input type="text" name="first_name" class="form-control" placeholder="* نام" value="{{old('first_name')}}" />
-                            </div>
-                            <div class="form-group pt-2">
-                                <input type="text"  name="last_name" class="form-control" placeholder="* نام خانوادگی" value="{{old('last_name')}}" />
-                            </div>
-                            <div class="form-group  pt-2">
-                                <input type="password"  name="password" class="form-control" placeholder="* رمز عبور " value="" />
-                            </div>
-                            <div class="form-group  pt-2">
-                                <input type="password"  name="password_confirmation" class="form-control"  placeholder="* تکرار رمز عبور " value="" />
-                            </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="* ایمیل"  >
+
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <input type="email"  name="email" class="form-control" placeholder="* پست الکترونیک " value="{{old('email')}}" />
-                            </div>
-                            <div class="form-group  pt-2">
-                                <input type="text" name="phone_number" class="form-control" placeholder="* تلفن تماس" value="{{old('phone_number')}}" />
-                            </div>
-                            <input type="submit" class="btnRegister"  value="عضویت"/>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="* رمز"  autocomplete="new-password">
                         </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="* تکرار رمز عبور" >
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" class="btnRegister col-12 mt-3" value="عضویت">
+                    </div>
+                    <div class="col-12 mt-2">
                         @if($errors->any())
-                            <div class="col-12 mx-auto mt-3">
-                                <div class="alert alert-danger mt-90">
 
-                                    @foreach($errors->all() as $key => $error)
-                                        {{ $error }}<br/>
-                                    @endforeach
-                                </div>
+                            <div class="alert alert-danger col-12">
+
+                                @foreach($errors->all() as $key => $error)
+                                    {{ $error }}<br/>
+                                @endforeach
                             </div>
                         @endif
+
                     </div>
-
-                </form>
-            </div>
-        </div>
-
-    </div>
-</div>
+                </div>
+            </form>
+        @endslot
+    @endcomponent
 @endsection
