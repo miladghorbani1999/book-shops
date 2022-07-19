@@ -3,9 +3,13 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
-        laravel([
-            ['resources/scss/app.scss','resources/scss/auth/index.scss'],
-            'resources/js/app.js',
-        ]),
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/scss/auth/index.scss',
+                'resources/js/app.js',
+            ],
+            refresh: true,
+        }),
     ],
 });
