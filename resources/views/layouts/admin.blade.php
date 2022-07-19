@@ -13,12 +13,7 @@
 <div class="container register">
     <div class="row">
         <!-- Right Side Title -->
-        <div class="col-12 col-md-3 register-right">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-            <h3>خوش آمدید</h3>
-            <p>تنها در چند ثانیه عضو شوید.</p>
-            <input type="submit" name="" value="ورود به سایت"/><br/>
-        </div>
+
         <!-- /Right Side Title -->
         <!-- Left Side Forms -->
         @yield('content')
