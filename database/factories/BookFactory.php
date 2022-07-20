@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Writer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
@@ -22,6 +23,7 @@ class BookFactory extends Factory
         $publication = now()->subMinutes(rand(0, 525_600));
         return [
             'category_id'      => Category::inRandomOrder()->first()->id,
+            'writer_id'        => Writer::inRandomOrder()->first()->id,
             'name'             => $this->faker->name(),
             'description'      => $this->faker->realText(100),
             'price'            => random_int(100,1000),

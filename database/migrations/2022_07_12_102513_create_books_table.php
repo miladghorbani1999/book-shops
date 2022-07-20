@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('writer_id');
             $table->string('name',50);
             $table->string('description');
             $table->integer('price');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('writer_id')->references('id')->on('writers');
         });
     }
 

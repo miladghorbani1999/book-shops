@@ -6,6 +6,8 @@ use App\Models\Address;
 use App\Models\Book;
 use App\Models\City;
 use App\Models\Factor;
+use App\Models\Writer;
+use Database\Factories\WriterFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -30,6 +32,8 @@ class DatabaseSeeder extends Seeder
                 ]);
 
          });
+
+        Writer::factory()->count(20)->create();
 
          Book::factory(50)->create()->each(function ($book){
 
