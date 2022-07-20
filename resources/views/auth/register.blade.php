@@ -19,10 +19,13 @@
                 <div class="row register-form mx-auto">
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" placeholder="* نام" value="{{old('name')}}"  autofocus >
+                            <input type="text" class="form-control" name="first_name" placeholder="* نام" value="{{old('first_name')}}"  autofocus >
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" name='last_name' value="{{old('last_name')}}" placeholder="* نام خانوادگی" >
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name='phone_number' value="{{old('phone_number')}}" placeholder="* شماره‌تلفن" >
                         </div>
 
                     </div>
