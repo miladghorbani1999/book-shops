@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\StoreBookRequest;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Writer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -28,7 +29,8 @@ class BookController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('auth.products.add_book', compact('categories'));
+        $writers    = Writer::all();
+        return view('auth.products.add_book', compact('categories','writers'));
     }
 
     /**
@@ -45,7 +47,8 @@ class BookController extends Controller
             'inventory' => $request->count,
             'category_id' => $request->category,
             'publication_year' => $request->publication_year,
-            'description'  => $request->description
+            'description'  => $request->description,
+            'writer_id' => $request->writer_id
         ]);
         if ( ! $request)
         {

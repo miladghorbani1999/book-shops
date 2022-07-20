@@ -17,7 +17,7 @@ class Book extends Model
         'count',
         'publication_year',
         'inventory',
-        'author_id'
+        'writer_id'
     ];
 
     public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
