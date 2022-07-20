@@ -146,6 +146,7 @@ return [
         'image' => 'عکس',
         'title' => 'عنوان',
         'count' =>'مقدار',
+        'inventory' =>'مقدار',
         'publication_year'=>'زمان‌انتشار',
         // admin
         'permission' => 'دسترسی',

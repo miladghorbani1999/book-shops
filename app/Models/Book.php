@@ -35,4 +35,9 @@ class Book extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function writer()
+    {
+        return $this->belongsTo(Writer::class);
+    }
+
 }

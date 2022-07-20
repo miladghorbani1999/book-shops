@@ -25,8 +25,8 @@ class StoreBookRequest extends FormRequest
     {
         return [
             'name' => 'required|bail|min:3|string',
-            'price' => 'required|bail|min:10000|integer',
-            'count' => 'required|bail|min:1|integer',
+            'price' => 'required|bail|integer',
+            'inventory' => 'required|bail|min:1|integer',
             'category' => 'required|bail|string',
             'publication_year' => 'required|bail'
         ];
@@ -43,9 +43,8 @@ class StoreBookRequest extends FormRequest
             'price.required' => __('auth.main.required'),
             'price.min' => __('auth.main.min'),
             'price.integer' => __('auth.main.integer'),
-            'count.required' => __('auth.main.required'),
-            'count.integer' => __('auth.main.integer'),
-            'count.min' => __('auth.main.min'),
+            'inventory.required' => __('auth.main.required'),
+            'inventory.integer' => __('auth.main.integer'),
             'category.required' => __('auth.main.required'),
             'category.string' => __('auth.main.string'),
             'publication_year.required' => __('auth.main.required'),

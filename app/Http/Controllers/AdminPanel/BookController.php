@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminPanel;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\StoreBookRequest;
 use App\Models\Book;
 use App\Models\Category;
@@ -14,11 +15,12 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $books = Book::latest()->paginate(15);;
+        return view('auth.products.books',compact('books'));
     }
 
     /**
@@ -36,7 +38,7 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreBookRequest $request)
@@ -72,23 +74,33 @@ class BookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $categories = Category::all();
+        $writers = Writer::all();
+        return view('auth.products.edit_book',compact('book','categories','writers'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(StoreBookRequest $request, $id)
     {
-        //
+        $book = Book::findOrFail($id)->update($request->toArray());
+
+//        var_dump($book);
+        if ( ! $book)
+        {
+            App::abort(500, 'Some Error');
+        }
+        return redirect('panel/books')->with('success', 'پست باموفقیت ویرایش شد.');
     }
 
     /**
