@@ -16,10 +16,13 @@
         "vite": "^2.9.11"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^34.2.0",
+        "@majidh1/jalalidatepicker": "^0.6.0",
         "@mdi/font": "^6.9.96",
         "bootstrap": "^5.2.0-beta1",
-        "jquery": "^3.6.0",
+        "jquery": "^3.4.1",
         "sass": "^1.5.1",
-        "sass-loader": "^13.0.2"
+        "sass-loader": "^13.0.2",
+        "sweetalert2": "^11.4.24"
     }
 }

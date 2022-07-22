@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\StoreBookRequest;
+use App\Http\Requests\Auth\BookRequest;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Writer;
@@ -41,7 +41,7 @@ class BookController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreBookRequest $request)
+    public function store(BookRequest $request)
     {
         $request = Book::create([
             'name' => $request->name,
@@ -91,7 +91,7 @@ class BookController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(StoreBookRequest $request, $id)
+    public function update(BookRequest $request, $id)
     {
         $book = Book::findOrFail($id)->update($request->toArray());
 

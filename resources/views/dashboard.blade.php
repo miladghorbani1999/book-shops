@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{$title??''}}</title>
     <!-- Styles -->
-    <link href="{{asset('vendor/assets/persian-datepicker/persianDatepicker-default.css')}}" rel="stylesheet">
+
     @vite(['resources/sass/app.scss','resources/sass/main.scss','resources/sass/auth/dashboard.scss'])
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
-    <script src="{{asset('vendor/assets/persian-datepicker/persianDatepicker.min.js')}}"></script>
+    @vite(['resources/js/app.js'])
+
 </head>
 <body dir="rtl">
 <div class="dashboard">
@@ -26,7 +23,7 @@
         <aside style="background-color: #222d32;height: 1100px" class="col-2 text-white text-center p-2 ps-0">
             <div class="image-right pt-3 text-right pe-3">
                 <img class="image-circle" src="{{asset('images/users/avatar.jpg')}}" alt="user_image">
-                <span class="pr-10">{{\Illuminate\Support\Facades\Auth::user()->full_name}}</span>
+                <span class="pr-10">{{Auth::user()->full_name}}</span>
             </div>
             <div class="menu mt-3 mb-3 ">
                 <p>منو</p>
@@ -56,17 +53,13 @@
             </div>
         </aside>
         <div class="col-10 gray-main-back">
-
-            <h1 class="fs-17 ps-4 pt-4">{{$title}}</h1>
+            <h1 class="fs-17 ps-4 pt-4">{{$title??''}}</h1>
             <div class="form-add-book col-11 mx-auto pt-4 mt-65 bg-white br-5">
                 @yield('content')
             </div>
-
-
         </div>
     </div>
 </div>
-@vite(['resources/js/requirements.js', 'resources/js/app.js'])
 </body>
 </html>
 

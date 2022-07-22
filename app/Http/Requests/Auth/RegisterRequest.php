@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules;
+
 class RegisterRequest extends FormRequest
 {
     /**
@@ -24,23 +25,28 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['bail','required', 'string', 'max:255'],
-            'last_name'  => ['bail','required', 'string', 'max:255'],
-            'email'      => ['bail','required', 'string', 'email', 'max:255', 'unique:users'],
-           'password'    => ['bail','required', 'confirmed', Rules\Password::defaults()],
+            'first_name' => ['bail', 'required', 'string', 'max:255'],
+            'last_name' => ['bail', 'required', 'string', 'max:255'],
+            'email' => ['bail', 'required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone_number' => ['bail', 'required','unique:users'],
+            'password' => ['bail', 'required', 'confirmed', Rules\Password::defaults()],
         ];
     }
-    public function messages(){
+
+    public function messages()
+    {
         return [
 
-            'first_name.max'      => __('auth.main.max'        ,["text"=>'نام']),
-            'last_name.required'  => __('auth.main.required'   ,['text'=>'نام خانوادگی']),
-            'last_name.max'       => __('auth.main.max'        ,["text"=>'نام خانوادگی']),
-            'email.required'      => __('auth.main.required'   ,['text'=>'ایمیل']),
-            'email.email'         => __('auth.main.required'   ,['text'=>'ایمیل']),
-            'email.unique:users'  => __('auth.main.unique'     ,['text'=>'ایمیل']),
-            'password.required'   => __('auth.main.required'   ,['text'=>'پسورد']),
-            'first_name.required' => __('auth.main.required'   ,['text'=>'نام']),
+            'first_name.max' => __('auth.main.max'),
+            'last_name.required' => __('auth.main.required'),
+            'last_name.max' => __('auth.main.max'),
+            'email.required' => __('auth.main.required'),
+            'email.email' => __('auth.main.required'),
+            'email.unique:users' => __('auth.main.unique'),
+            'phone_number.required' => __('auth.main.required'),
+            'phone_number.unique:users' => __('auth.main.unique'),
+            'password.required' => __('auth.main.required'),
+            'first_name.required' => __('auth.main.required'),
         ];
     }
 }

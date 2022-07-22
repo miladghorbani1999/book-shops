@@ -2,13 +2,7 @@
 
 @section('content')
     <div class="list-books">
-        @if (Session::has('success'))
-            <div class="alert alert-success mb-0">
-                <ul class="mb-0">
-                    <li>{!! Session::get('success') !!}</li>
-                </ul>
-            </div>
-        @endif
+
         <table class="table">
             <thead>
             <tr>
@@ -41,4 +35,14 @@
         </table>
         {!! $books->links() !!}
     </div>
+    <script type="module">
+        @if (Session::has('success'))
+        Swal.fire({
+            title: '',
+            text: 'اطلاعات کتاب با موفقیت ویرایش شد.',
+            icon: 'success',
+            confirmButtonText: 'تایید'
+        })
+        @endif
+    </script>
 @endsection

@@ -224,6 +224,7 @@ return [
         // user auth
         'email' => 'ایمیل' ,
         'mobile' => 'شماره موبایل',
+        'phone_number' => 'شماره موبایل',
         'verifyCode' => 'کد احراز هویت',
         'versionNumber' => 'نسخه اپلیکشن ',
         'fullname' => 'نام و نام خانوادگی',
