@@ -6,12 +6,12 @@
         <form action="{{route('books.update',$book)}}" class="row col-11 mx-auto pb-3" method="POST">
             @csrf
             <input type="hidden" name="_method" value="put" />
-            <div class="form-group col-6 ">
+            <div class="form-group col-12 ">
                 <label for="first-name">نام</label>
                 <input type="text" name="name" class="form-control" id="first-name"
                        value="{{$book->name}}" >
             </div>
-            <div class="form-group col-6 ">
+            <div class="form-group col-6 pt-3">
                 <label for="price">قیمت</label>
                 <input type="number" name="price" class="form-control" id="price"
                        value="{{$book->price}}"/>
@@ -23,7 +23,7 @@
             </div>
             <div class="form-group col-6 pt-3">
                 <label for="category">دسته‌بندی</label>
-                <select id="category" name="category" class="form-control" >
+                <select id="category" name="category_id" class="form-control" >
                     @foreach($categories as $category)
                         @if($category->id==$book->category->id)
                             <option selected value="{{$category['id']}}">{{$category['name']}}</option>
@@ -32,20 +32,6 @@
                     @endforeach
                 </select>
             </div>
-
-            <div class="form-group col-6 pt-3">
-                <label for="writer">نویسنده</label>
-                <select id="writer" name="writer_id" class="form-control">
-
-                    @foreach($writers as $writer)
-                        @if($writer->id==$book->writer->id)
-                            <option selected value="{{$writer['id']}}">{{$writer['full_name']}}</option>
-                        @endif
-                        <option value="{{$writer['id']}}">{{$writer['full_name']}}</option>
-                    @endforeach
-                </select>
-            </div>
-
             <div class="form-group col-6 pt-3">
                 <label for="publication">زمان انتشار</label>
                 <input data-jdp type="text" name="publication_year" class="form-control publication-time" id="publication"

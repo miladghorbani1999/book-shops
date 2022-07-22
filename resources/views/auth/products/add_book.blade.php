@@ -3,12 +3,12 @@
     <div class="add-book">
         <form action="{{route('books.store')}}" class="row col-11 mx-auto pb-3" method="POST">
             @csrf
-            <div class="form-group col-6 ">
+            <div class="form-group col-12 ">
                 <label for="first-name">نام</label>
                 <input type="text" name="name" class="form-control" id="first-name"
                        placeholder="نام کتاب‌را وارد کنید" {{old('name')}}>
             </div>
-            <div class="form-group col-6 ">
+            <div class="form-group col-6 pt-3">
                 <label for="price">قیمت</label>
                 <input type="number" name="price" class="form-control" id="price"
                        placeholder="قیمت کتاب را به ریال وارد کنید" {{old('price')}}/>
@@ -20,23 +20,13 @@
             </div>
             <div class="form-group col-6 pt-3">
                 <label for="category">دسته‌بندی</label>
-                <select id="category" name="category" class="form-control" {{old('category')}}>
+                <select id="category" name="category_id" class="form-control" {{old('category')}}>
                     <option>بدون دسته‌بندی</option>
                     @foreach($categories as $category)
                         <option value="{{$category['id']}}">{{$category['name']}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="form-group col-6 pt-3">
-                <label for="writer">نویسنده</label>
-                <select id="writer" name="writer_id" class="form-control" {{old('category')}}>
-                    <option>انتخاب</option>
-                    @foreach($writers as $writer)
-                        <option value="{{$writer['id']}}">{{$writer['full_name']}}</option>
-                    @endforeach
-                </select>
-            </div>
-
             <div class="form-group col-6 pt-3">
                 <label for="publication">زمان انتشار</label>
                 <input  data-jdp type="text" name="publication_year" class="form-control publication-time" id="publication"
@@ -56,13 +46,6 @@
                         @foreach($errors->all() as $key => $error)
                             {{ $error }}<br/>
                         @endforeach
-                    </div>
-                @endif
-                @if (Session::has('success'))
-                    <div class="alert alert-success mb-0">
-                        <ul>
-                            <li>{!! Session::get('success') !!}</li>
-                        </ul>
                     </div>
                 @endif
             </div>

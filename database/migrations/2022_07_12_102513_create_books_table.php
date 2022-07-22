@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('inventory');
             $table->timestamp('publication_year')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');

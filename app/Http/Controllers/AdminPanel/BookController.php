@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Writer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -31,8 +32,7 @@ class BookController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $writers    = Writer::all();
-        return view('auth.products.add_book', compact('categories','writers'));
+        return view('auth.products.add_book', compact('categories'));
     }
 
     /**
@@ -43,20 +43,15 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $request = Book::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'inventory' => $request->count,
-            'category_id' => $request->category,
-            'publication_year' => $request->publication_year,
-            'description'  => $request->description,
-            'writer_id' => $request->writer_id
-        ]);
+        $data = $request->all();
+        $data['writer_id'] = Auth::user()->id;
+        $data['publication_year'] = jalali_to_solar($data['publication_year']);
+        $request = Book::create($data);
         if ( ! $request)
         {
             App::abort(500, 'Some Error');
         }
-        return  redirect()->back()->with('success', 'کتاب با موفقیت اضافه شد.');
+        return redirect('panel/books')->with('success', 'کتاب باموفقیت اضافه شد.');
     }
 
     /**
@@ -94,6 +89,7 @@ class BookController extends Controller
     public function update(BookRequest $request, $id)
     {
         $data = $request->all();
+        $data['writer_id'] = Auth::user()->id;
         $data['publication_year'] = jalali_to_solar($data['publication_year']);
         $book = Book::findOrFail($id)->update($data);
 
@@ -102,17 +98,19 @@ class BookController extends Controller
         {
             App::abort(500, 'Some Error');
         }
-        return redirect('panel/books')->with('success', 'پست باموفقیت ویرایش شد.');
+        return redirect('panel/books')->with('success', 'کتاب باموفقیت ویرایش شد.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+//    dd($id);
+        Book::findOrFail($id)->delete();
+        return  redirect()->back()->with('success', 'کتاب با موفقیت حذف شد.');
     }
 }

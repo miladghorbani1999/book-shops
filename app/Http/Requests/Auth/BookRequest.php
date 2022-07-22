@@ -27,7 +27,7 @@ class BookRequest extends FormRequest
             'name' => 'required|bail|min:3|string',
             'price' => 'required|bail|integer',
             'inventory' => 'required|bail|min:1|integer',
-            'category' => 'required|bail|string',
+            'category_id' => 'required|bail|string',
             'publication_year' => 'required|bail'
         ];
 
@@ -45,8 +45,8 @@ class BookRequest extends FormRequest
             'price.integer' => __('auth.main.integer'),
             'inventory.required' => __('auth.main.required'),
             'inventory.integer' => __('auth.main.integer'),
-            'category.required' => __('auth.main.required'),
-            'category.string' => __('auth.main.string'),
+            'category_id.required' => __('auth.main.required'),
+            'category_id.string' => __('auth.main.string'),
             'publication_year.required' => __('auth.main.required'),
         ];
     }

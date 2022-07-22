@@ -15,6 +15,7 @@
                 <th scope="col">تاریخ انتشار</th>
                 <th scope="col">توضیحات</th>
                 <th scope="col"> </th>
+                <th scope="col"> </th>
             </tr>
             </thead>
             <tbody>
@@ -28,7 +29,14 @@
                 <td>{{to_persian($book->price)}}</td>
                 <td>{{to_persian(jalali_date($book->publication_year))}}</td>
                 <td>{{$book->description}}</td>
-                <td><a href="{{route('books.edit',[$book])}}">ویرایش</a></td>
+                <td><a class="text-decoration-none text-dark" href="{{route('books.edit',[$book])}}">ویرایش</a></td>
+                <td>
+                    <form method="POST" action="{{route('books.destroy',[$book->id])}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" >حدف</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
             </tbody>
@@ -39,7 +47,7 @@
         @if (Session::has('success'))
         Swal.fire({
             title: '',
-            text: 'اطلاعات کتاب با موفقیت ویرایش شد.',
+            text: "{!! \Session::get('success') !!}",
             icon: 'success',
             confirmButtonText: 'تایید'
         })
