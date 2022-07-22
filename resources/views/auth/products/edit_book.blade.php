@@ -49,7 +49,7 @@
             <div class="form-group col-6 pt-3">
                 <label for="publication">زمان انتشار</label>
                 <input data-jdp type="text" name="publication_year" class="form-control publication-time" id="publication"
-                       value="{{$book->publication_year}}" {{old('publication_year')}}/>
+                       value="{{jalali_date_format2($book->publication_year)}}" {{old('publication_year')}}/>
             </div>
             <div class="form-group col-12 pt-3">
                 <label for="description">توضیحات</label>

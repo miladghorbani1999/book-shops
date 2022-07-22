@@ -93,7 +93,9 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, $id)
     {
-        $book = Book::findOrFail($id)->update($request->toArray());
+        $data = $request->all();
+        $data['publication_year'] = jalali_to_solar($data['publication_year']);
+        $book = Book::findOrFail($id)->update($data);
 
 //        var_dump($book);
         if ( ! $book)

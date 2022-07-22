@@ -26,7 +26,7 @@
                 <td>{{$book->writer->full_name}}</td>
                 <td>{{$book->inventory}}</td>
                 <td>{{$book->price}}</td>
-                <td>{{$book->publication_year}}</td>
+                <td>{{jalali_date($book->publication_year)}}</td>
                 <td>{{$book->description}}</td>
                 <td><a href="{{route('books.edit',[$book])}}">ویرایش</a></td>
             </tr>
