@@ -20,13 +20,13 @@
             <tbody>
             @foreach($books as $key=>$book)
             <tr>
-                <th scope="row">{{$key}}</th>
+                <th scope="row">{{to_persian($key)}}</th>
                 <td>{{$book->name}}</td>
                 <td>{{$book->category->name}}</td>
                 <td>{{$book->writer->full_name}}</td>
-                <td>{{$book->inventory}}</td>
-                <td>{{$book->price}}</td>
-                <td>{{jalali_date($book->publication_year)}}</td>
+                <td>{{to_persian($book->inventory)}}</td>
+                <td>{{to_persian($book->price)}}</td>
+                <td>{{to_persian(jalali_date($book->publication_year))}}</td>
                 <td>{{$book->description}}</td>
                 <td><a href="{{route('books.edit',[$book])}}">ویرایش</a></td>
             </tr>
