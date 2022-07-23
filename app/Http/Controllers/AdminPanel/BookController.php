@@ -21,7 +21,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::latest()->paginate(15);;
-        return view('auth.products.books',compact('books'));
+        return view('panel.books.index',compact('books'));
     }
 
     /**
@@ -32,7 +32,7 @@ class BookController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('auth.products.add_book', compact('categories'));
+        return view('panel.books.create', compact('categories'));
     }
 
     /**
@@ -76,7 +76,7 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $categories = Category::all();
         $writers = Writer::all();
-        return view('auth.products.edit_book',compact('book','categories','writers'));
+        return view('panel.books.edit',compact('book','categories','writers'));
     }
 
     /**

@@ -24,6 +24,13 @@
             <div class="image-right pt-3 text-right pe-3">
                 <img class="image-circle" src="{{asset('images/users/avatar.jpg')}}" alt="user_image">
                 <span class="pr-10">{{Auth::user()->full_name}}</span>
+                <a class="btn btn-primary logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    خروج <i class="mdi mdi-logout"></i>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             </div>
             <div class="menu mt-3 mb-3 ">
                 <p>منو</p>
