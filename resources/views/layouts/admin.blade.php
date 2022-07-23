@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{$title??''}}</title>
     <!-- Styles -->
-    @vite(['resources/sass/app.scss', 'resources/sass/auth/index.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/auth/main.scss', 'resources/js/app.js'])
 
 </head>
 <body dir="rtl">

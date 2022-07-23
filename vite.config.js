@@ -5,14 +5,13 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/js/requirements.js',
-                'resources/css/app.css',
-                'resources/scss/auth/index.scss',
-                'resources/scss/auth/dashboard.scss',
-                'resources/scss/main.scss',
+                'resources/scss/auth/main.scss',
+                'resources/scss/dashboard/main.scss',
+                'resources/scss/app.css',
+
                 'resources/js/app.js',
-                'resources/vendor/assets/persian-datepicker/persianDatepicker.min.js',
-                'resources/vendor/assets/persian-datepicker/persianDatepicker.css',
+                'resources/js/requirements.js',
+
             ],
             refresh: true,
         }),

@@ -7,7 +7,7 @@
     <title>{{$title??''}}</title>
     <!-- Styles -->
 
-    @vite(['resources/sass/app.scss','resources/sass/main.scss','resources/sass/auth/dashboard.scss'])
+    @vite(['resources/sass/app.scss','resources/sass/dashboard/main.scss'])
     @vite(['resources/js/app.js'])
 
 </head>
