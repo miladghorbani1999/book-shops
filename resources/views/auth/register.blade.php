@@ -25,7 +25,7 @@
                             <input type="text" class="form-control" name='last_name' value="{{old('last_name')}}" placeholder="* نام خانوادگی" >
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" name='phone_number' value="{{old('phone_number')}}" placeholder="* شماره‌تلفن" >
+                            <input type="number" class="form-control" name='mobile' value="{{old('phone_number')}}" placeholder="* شماره‌تلفن" >
                         </div>
 
                     </div>

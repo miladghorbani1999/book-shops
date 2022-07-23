@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'first_name' => ['bail', 'required', 'string', 'max:255'],
             'last_name' => ['bail', 'required', 'string', 'max:255'],
             'email' => ['bail', 'required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone_number' => ['bail', 'required','unique:users'],
+            'mobile' => ['bail', 'required','unique:users'],
             'password' => ['bail', 'required', 'confirmed', Rules\Password::defaults()],
         ];
     }
@@ -43,8 +43,8 @@ class RegisterRequest extends FormRequest
             'email.required' => __('auth.main.required'),
             'email.email' => __('auth.main.required'),
             'email.unique:users' => __('auth.main.unique'),
-            'phone_number.required' => __('auth.main.required'),
-            'phone_number.unique:users' => __('auth.main.unique'),
+            'mobile.required' => __('auth.main.required'),
+            'mobile.unique:users' => __('auth.main.unique'),
             'password.required' => __('auth.main.required'),
             'first_name.required' => __('auth.main.required'),
         ];
