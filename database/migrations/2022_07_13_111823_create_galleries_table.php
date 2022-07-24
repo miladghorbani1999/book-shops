@@ -18,8 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('book_id');
             $table->string('type',100);
             $table->string('url');
-
-            $table->foreign('book_id')->references('id')->on('books');
         });
     }
 

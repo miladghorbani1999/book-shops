@@ -19,15 +19,15 @@
                 <tr>
                     <th scope="row">{{to_persian($key)}}</th>
                     <td>{{$category->name}}</td>
-                    @if($category->category)
-                    <td>{{$category->category->name}}</td>
+                    @if($category->parentCategory)
+                    <td>{{$category->parentCategory->name}}</td>
                     @else
                         <td>-</td>
                     @endif
 
-                    <td><a class="text-decoration-none text-dark" href="{{route('books.edit',[$category])}}">ویرایش</a></td>
+                    <td><a class="text-decoration-none text-dark" href="{{route('category.edit',[$category])}}">ویرایش</a></td>
                     <td>
-                        <form method="POST" action="{{route('books.destroy',[$category->id])}}">
+                        <form method="POST" action="{{route('category.destroy',[$category->id])}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" >حدف</button>

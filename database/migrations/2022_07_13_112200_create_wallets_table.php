@@ -18,8 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('balance');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

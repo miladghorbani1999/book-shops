@@ -22,7 +22,7 @@ class Category extends Model
        return $this->hasMany(Book::class);
    }
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function parentCategory(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Category::class, 'id','parent_id');
 

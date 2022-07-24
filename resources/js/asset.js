@@ -20,3 +20,10 @@ import '@majidh1/jalalidatepicker/dist/jalalidatepicker.min'
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 window.ClassicEditor = ClassicEditor;
 
+
+// require('select2/dist/js/select2');
+import select2 from 'select2';
+//Hook up select2 to jQuery
+select2($);
+//...later
+$(`select`).select2();

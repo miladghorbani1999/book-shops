@@ -21,8 +21,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['factor_id','book_id']);
-            $table->foreign('factor_id')->references('id')->on('factors');
-            $table->foreign('book_id')->references('id')->on('books');
 
         });
     }

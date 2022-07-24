@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('price');
             $table->string('address');
 
-            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 
