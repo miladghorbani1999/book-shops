@@ -251,7 +251,7 @@ return [
         'phone' => 'شماره تماس',
         'postal_code' => 'کد پستی',
         'city_id' => 'شهر',
-        'province_id' => 'استان'
+        'province_id' => 'استان',
     ],
 
 ];

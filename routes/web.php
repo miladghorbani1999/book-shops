@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\BookController;
+use App\Http\Controllers\AdminPanel\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,6 @@ require __DIR__.'/auth.php';
 
 Route::middleware('auth')->prefix('panel')->group(function () {
     Route::resource('books',BookController::class);
+
+    Route::resource('category',CategoryController::class);
 });
