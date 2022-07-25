@@ -3,10 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Address;
+use App\Models\AddressMethod;
 use App\Models\Book;
 use App\Models\City;
 use App\Models\Factor;
 use App\Models\Writer;
+use Database\Factories\AddressMethodFactory;
 use Database\Factories\WriterFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -45,9 +47,11 @@ class DatabaseSeeder extends Seeder
 
          });
 
-         City::factory(10)->create();
+        $this->call(CitySeeder::class);
 
          Address::factory(30)->create();
+
+         AddressMethod::factory(5)->create();
 
          Factor::factory(10)->create()->each(function ($factor){
 
